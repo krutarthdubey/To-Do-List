@@ -35,6 +35,41 @@ function App() {
       )
     );
   };
+
+    // Edit Task
+  const editTask = (id, newText) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id
+          ? { ...task, text: newText }
+          : task
+      )
+    );
+  };
+
+  return (
+    <div className="container">
+      <Header />
+
+      <div className="input-section">
+        <input
+          type="text"
+          placeholder="Enter task"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+
+        <button onClick={addTask}>Add</button>
+      </div>
+
+      <ToDoList
+        tasks={tasks}
+        deleteTask={deleteTask}
+        toggleComplete={toggleComplete}
+        editTask={editTask}
+      />
+    </div>
+  );
 }
 
 export default App;
