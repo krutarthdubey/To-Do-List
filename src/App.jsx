@@ -19,6 +19,22 @@ function App() {
     setTasks([...tasks, newTask]);
     setInput("");
   };
+
+  // Delete Task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  // Complete Task
+  const toggleComplete = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id
+          ? { ...task, completed: !task.completed }
+          : task
+      )
+    );
+  };
 }
 
 export default App;
